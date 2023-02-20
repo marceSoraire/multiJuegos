@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// components
+import Nav from './Components/Nav/Nav';
+
+//Juegos
+import Tateti from './views/Tateti/Tateti';
+import Memotest from './views/Memotest/Memotest';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter className="App">
+      <Nav />
+        <Routes>
+          <Route path='/memotest' element={<Memotest />}></Route>
+          <Route path='/tateti' element={<Tateti/>}></Route>
+          <Route />
+        </Routes>
+    </BrowserRouter>
   );
 }
 
