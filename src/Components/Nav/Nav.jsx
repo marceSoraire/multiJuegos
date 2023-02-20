@@ -9,7 +9,7 @@ const Nav = () => {
 
     return (
         <>
-            <div className='w-full h-14 p-2 flex z-20 justify-around bg-gray-800'>
+            <div className='w-full h-16 p-2 flex z-20 justify-around bg-gray-800'>
                 <div className='flex flex-column'>
                     <Link to='/' className='flex text-gray-100 my-auto text-lg px-4 hover:text-orange-400'>
                         <IoGameControllerOutline size={25} className='my-auto mr-2'/>MultiJuegos

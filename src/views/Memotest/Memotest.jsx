@@ -46,9 +46,14 @@ const Memotest = () => {
         showConfirmButton: false,
         timer: 2000
       })
-      setTimeout(() => window.location.reload(), 2000)
+      setTimeout(() => reload(), 2000)
     }
   }, [encontrados])
+  
+  const reload =()=> {
+    setEncontrados([]);
+      setelegido([]);
+  }
 
   return (
     <>
@@ -63,7 +68,7 @@ const Memotest = () => {
               key={img}
               className='border border-gray-600 cursor-pointer hover:shadow-xl hover:shadow-gray-600 bg-gray-100 mx-auto p-2 rounded-md'>
               {encontrados.includes(img) || elegido.includes(img) ? (
-                <img src={url} alt='icons' />
+                <img src={url} alt='icons'/>
               ) : (
                 <img src='https://icongr.am/clarity/help.svg?size=128&color=currentColor' alt='icons' />
               )}
