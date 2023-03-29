@@ -4,6 +4,7 @@ import Cards from '../Cards/Cards';
 import memo from '../../img/memotest.jpg';
 import XO from '../../img/tateti.jpg';
 import poke from '../../img/pokemon.jpeg';
+import simons from '../../img/simonDice.png'
 import { Link } from 'react-router-dom';
 
 const Presentacion = () => {
@@ -13,6 +14,7 @@ const Presentacion = () => {
       <div className='block text-center md:flex flex-wrap md:justify-around my-12'>
         <Link to='memotest'><Cards img={memo} title='Memotest'/></Link>
         <Link to='tateti'><Cards img={XO} title='Ta-Te-Ti'/></Link>
+        <Link to='simondice'><Cards img={simons} title='Simon Dice'/></Link>
         <Link to='pokemon'><Cards img={poke} title='Pokemon'/></Link>
       </div>
     </div>

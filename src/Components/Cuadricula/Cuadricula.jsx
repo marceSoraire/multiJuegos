@@ -5,7 +5,7 @@ const X = 'https://icongr.am/entypo/cross.svg?size=150&color=ff0505';
 const O = 'https://icongr.am/clarity/check-circle.svg?size=128&color=1017da';
 const base = 'https://icongr.am/entypo/cycle.svg?size=128&color=currentColor';
 
-const Cuadricula = ({ value, onClick, turno, win }) => {
+const Cuadricula = ({ value, onClick, turno }) => {
 
     const [player, setPlayer] = useState(null);
     const handleClick = () => {
