@@ -16,7 +16,7 @@ const Cuadricula = ({ value, onClick, turno }) => {
     return (
         <>
             {value !== null ? (
-                <div className='cursor-pointer border border-gray-700 rounded-md w-24 h-24 md:w-40 md:h-40 bg-gray-100 m-2 pt-3 pl-2 hover:shadow-lg hover:shadow-gray-800' onClick={() => handleClick()}>
+                <div className='cursor-pointer border border-gray-700 rounded-xl w-24 h-24 md:w-40 md:h-40 bg-zinc-100 m-2 pt-3 pl-2 hover:shadow-lg hover:shadow-gray-800' onClick={() => handleClick()}>
                     {player === X ? (
                         <div className='animate__animated animate__rotateIn'>
                             <img src={player} alt='x' />
@@ -28,7 +28,7 @@ const Cuadricula = ({ value, onClick, turno }) => {
                     )}
                 </div>
             ) : (
-                <div className='cursor-pointer border border-gray-700 rounded-md w-24 h-24 md:w-40 md:h-40 bg-gray-100 m-2 pt-3 pl-2 hover:shadow-lg hover:shadow-gray-800' onClick={() => handleClick()}>
+                <div className='cursor-pointer border border-gray-700 rounded-xl w-24 h-24 md:w-40 md:h-40 bg-zinc-100 m-2 pt-3 pl-2 hover:shadow-lg hover:shadow-gray-800' onClick={() => handleClick()}>
                     <div>
                         <img src={base} alt='base' />
                     </div>

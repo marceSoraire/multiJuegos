@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, startTransition } from 'react'
 import ColorCard from '../../Components/ColorCard/ColorCard'
 import Utils from '../../Components/Utils/Utils';
 import Swal from 'sweetalert2';
@@ -21,29 +21,6 @@ const SimonDice = () => {
     const startHandle = () => {
         setOn(true)
     }
-
-    useEffect(() => {
-        if (on) {
-            setPlay({ ...init, display: true })
-        } else {
-            setPlay(init)
-        }
-    }, [on])
-
-    useEffect(() => {
-        if (on && play.display) {
-            let newColor = colorList[Math.floor(Math.random() * 4)];
-            const copyColors = [...play.colors]
-            copyColors.push(newColor);
-            setPlay({ ...play, colors: copyColors })
-        }
-    }, [on, play.display])
-
-    useEffect(() => {
-        if (on && play.display && play.colors.length) {
-            displayColors();
-        }
-    }, [on, play.display, play.colors.length])
 
     const displayColors = async () => {
         await Utils(1000)
@@ -91,7 +68,7 @@ const SimonDice = () => {
                     position: 'top-end',
                     icon: 'error',
                     title: 'Perdiste',
-                    text: `Puntos ${play.score}`,
+                    text: `Puntos: ${play.score}`,
                     showConfirmButton: false,
                     timer: 2000
                 })
@@ -101,32 +78,57 @@ const SimonDice = () => {
         setFlash('')
     }
 
-    const handleLost =()=>{
+    const handleLost = () => {
         setOn(false)
     }
 
+    useEffect(() => {
+        if (on) {
+            setPlay({ ...init, display: true })
+        } else {
+            setPlay(init)
+        }
+    }, [on])
+
+    useEffect(() => {
+        if (on && play.display) {
+            let newColor = colorList[Math.floor(Math.random() * 4)];
+            const copyColors = [...play.colors]
+            copyColors.push(newColor);
+            setPlay({ ...play, colors: copyColors })
+        }
+    }, [on, play.display])
+
+    useEffect(() => {
+        if (on && play.display && play.colors.length) {
+            displayColors();
+        }
+    }, [on, play.display, play.colors.length])
+
     return (
-        <div className="w-[200px] md:w-[400px] mx-auto">
-            <div className='flex flex-wrap w-[200px] md:w-[400px] m-auto mt-20'>
-                {colorList && colorList.map((e, key) => {
-                    return (
-                        <ColorCard color={e} key={key} flash={flash === e} onClick={() => { handleOnClick(e) }} />
-                    )
-                })}
-            </div>
-            {!on && !play.score && (
-                <button onClick={startHandle} className='w-full p-4 rounded-b-md border hover:border-gray-600 text-[30px]'>Jugar</button>
-            )}
-            {on && (play.display || play.userPlay) && (
-                <div className='w-full text-[50px] flex justify-center p-4'>{play.score}</div>
-            )}
-            {on && !play.display && !play.userPlay && play.score && (
-                <div className='w-full text-[25px] p-4 rounded-b-md border hover:border-gray-600'>
-                    <button onClick={handleLost} className='w-full'>Reiniciar</button>
+        <div className="w-full bg-[url('./img/fondoComun.jpg')] bg-no-repeat bg-cover bg-center h-[100vh]">
+            <div className="w-[200px] md:w-[400px] mx-auto ">
+                <div className='flex flex-wrap w-[200px] md:w-[400px] m-auto pt-14'>
+                    {colorList && colorList.map((e, key) => {
+                        return (
+                            <ColorCard color={e} key={key} flash={flash === e} onClick={() => { handleOnClick(e) }} />
+                        )
+                    })}
                 </div>
-            )}
+                {!on && !play.score && (
+                    <button onClick={startHandle} className='bg-zinc-100 w-full p-4 rounded-b-md border border-gray-600 hover:bg-white text-[30px] bg-'>Jugar</button>
+                )}
+                {on && (play.display || play.userPlay) && (
+                    <div className='w-full text-[50px] flex justify-center p-4'>{play.score}</div>
+                )}
+                {on && !play.display && !play.userPlay && play.score && (
+                    <div className='bg-zinc-100 w-full text-[25px] p-5 rounded-b-md border border-gray-600 hover:bg-white'>
+                        <button onClick={handleLost} className='w-full'>Reiniciar</button>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
 
-export default SimonDice
+export default SimonDice;

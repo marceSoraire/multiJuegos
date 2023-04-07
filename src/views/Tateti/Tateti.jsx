@@ -79,8 +79,8 @@ const Tateti = () => {
         setTimeout(() => reset(), 2000)
     }
     return (
-        <>
-            <h1 className='text-center text-[25px] font-serif text-gray-700 uppercase mt-2'>TA-TE-TI</h1>
+        <div className="-mt-2 w-full bg-[url('./img/fondoComun.jpg')] bg-no-repeat bg-cover bg-center h-[100vh]">
+            <h1 className='text-center text-[25px] font-serif text-gray-900 uppercase mt-2'>TA-TE-TI</h1>
             <div className='flex flex-col w-full md:w-[70%] lg:w-[50%] xl:w-[30%] mx-auto md:p-12'>
                 <div className='flex justify-evenly'>
                     {createCuadricula([0, 1, 2])}
@@ -96,7 +96,7 @@ const Tateti = () => {
                 <div className='bg-red-600 w-full text-center text-white text-[40px] rounded-l-xl'>{puntaje.X}</div>
                 <div className='bg-blue-600 w-full text-center text-white text-[40px] rounded-r-xl'>{puntaje.O}</div>
             </div>
-        </>
+        </div>
     )
 }
 

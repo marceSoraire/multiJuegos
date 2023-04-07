@@ -56,8 +56,8 @@ const Memotest = () => {
   }
 
   return (
-    <>
-      <h1 className='text-center text-[25px] font-serif text-gray-700 uppercase mt-2'>Memotest</h1>
+    <div className="-mt-2 w-full bg-[url('./img/fondoComun.jpg')] bg-no-repeat bg-cover bg-center h-[100vh]">
+      <h1 className='text-center text-[25px] font-serif text-gray-900 uppercase mt-2'>Memotest</h1>
       <ul className='grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-1 md:gap-4 md:w-[80%] mx-auto p-6'>
         {imagenes.map((img) => {
           const [, url] = img.split('|');
@@ -66,7 +66,7 @@ const Memotest = () => {
             <li
               onClick={() => elegido.length < 2 && setelegido((elegido) => elegido.concat(img))}
               key={img}
-              className='border border-gray-600 cursor-pointer hover:shadow-xl hover:shadow-gray-600 bg-gray-100 mx-auto p-2 rounded-md'>
+              className='border-2 border-black cursor-pointer hover:shadow-xl hover:shadow-gray-600 bg-blue-200 mx-auto p-2 rounded-full'>
               {encontrados.includes(img) || elegido.includes(img) ? (
                 <img src={url} alt='icons'/>
               ) : (
@@ -77,7 +77,7 @@ const Memotest = () => {
         })}
 
       </ul>
-    </>
+    </div>
   )
 }
 
